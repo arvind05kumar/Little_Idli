@@ -210,9 +210,10 @@ function TextOverlays({ scrollProgress, isReady }: { scrollProgress: MotionValue
     const opacity4 = useTransform(scrollProgress, [0.7, 0.75, 0.85, 0.9], [0, 1, 1, 0]);
     const y4 = useTransform(scrollProgress, [0.7, 0.9], [50, -50]);
 
-    // Final CTA: 90% - 100%
-    const opacity5 = useTransform(scrollProgress, [0.9, 0.95, 1], [0, 1, 1]);
-    const y5 = useTransform(scrollProgress, [0.9, 1], [50, 0]);
+    // Final CTA: fade in then fade out so it doesn't linger over the menu
+    // appear around 90%, then start disappearing by the end of the scroll container
+    const opacity5 = useTransform(scrollProgress, [0.9, 0.95, 1], [0, 1, 0]);
+    const y5 = useTransform(scrollProgress, [0.9, 1], [50, -50]);
 
     // If we're not ready, hide everything or just show static initial state?
     // Safer to hide overlay until we are sure we are at 0, 
